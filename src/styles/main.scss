@@ -1,0 +1,152 @@
+// _variables.scss
+$gold: #D4AF37;
+$silver: #C0C0C0;
+$black: #111111;
+$white: #F8F8F8;
+$transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+// Hero.scss
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: $black;
+  color: $white;
+  
+  &__content {
+    text-align: center;
+    z-index: 2;
+  }
+  
+  &__title {
+    font-size: 5rem;
+    font-weight: 300;
+    letter-spacing: 0.5rem;
+    margin-bottom: 2rem;
+    opacity: 0;
+  }
+  
+  &__subtitle {
+    font-size: 1.5rem;
+    letter-spacing: 0.3rem;
+    opacity: 0;
+  }
+  
+  &__diamond {
+    margin: 3rem auto;
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+    
+    svg {
+      filter: drop-shadow(0 0 10px rgba($gold, 0.5));
+    }
+  }
+  
+  &__cta {
+    background: transparent;
+    border: 1px solid $gold;
+    color: $white;
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+    letter-spacing: 0.2rem;
+    cursor: pointer;
+    transition: $transition;
+    opacity: 0;
+    
+    &:hover {
+      background: rgba($gold, 0.2);
+    }
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/assets/images/luxury-pattern.png');
+    opacity: 0.03;
+    z-index: 1;
+  }
+}
+
+// Portfolio.scss
+.portfolio {
+  padding: 8rem 0;
+  background: $white;
+  
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 0 5%;
+  }
+}
+
+.portfolio-item {
+  height: 400px;
+  perspective: 1000px;
+  
+  &__inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: $transition;
+  }
+  
+  &__image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  &__overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba($black, 0.8), transparent);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+    color: $white;
+    opacity: 0;
+    transition: $transition;
+  }
+  
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+    transform: translateY(20px);
+    transition: $transition;
+  }
+  
+  &__category {
+    font-size: 0.9rem;
+    letter-spacing: 0.1rem;
+    color: $gold;
+    transform: translateY(20px);
+    transition: $transition;
+    transition-delay: 0.1s;
+  }
+  
+  &:hover {
+    .portfolio-item__overlay {
+      opacity: 1;
+    }
+    
+    .portfolio-item__title,
+    .portfolio-item__category {
+      transform: translateY(0);
+    }
+  }
+}

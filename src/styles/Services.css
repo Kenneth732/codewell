@@ -1,0 +1,413 @@
+/* LuxuryServices.css */
+
+/* Base Variables */
+:root {
+  --primary-accent: #D4AF37; /* Gold */
+  --primary-dark: #0F0F1A; /* Navy */
+  --primary-light: #F8F8F8;
+  --text-dark: #111111;
+  --text-light: #FFFFFF;
+  --text-muted: rgba(255, 255, 255, 0.7);
+  --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --border-radius: 12px;
+  --box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  --box-shadow-accent: 0 20px 60px rgba(212, 175, 55, 0.3);
+}
+
+/* Base Styles */
+.luxury-services {
+  position: relative;
+  width: 100%;
+  padding: 10rem 5%;
+  background-color: var(--primary-dark);
+  color: var(--text-light);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.portfolio-container {
+  max-width: 1600px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Background Ornaments */
+.luxury-services-ornament {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.05);
+  filter: blur(30px);
+  z-index: -1;
+  animation: float 8s ease-in-out infinite;
+}
+
+.luxury-services-ornament-1 {
+  width: 600px;
+  height: 600px;
+  top: -300px;
+  left: -300px;
+  animation-delay: 0s;
+}
+
+.luxury-services-ornament-2 {
+  width: 400px;
+  height: 400px;
+  bottom: -200px;
+  right: -200px;
+  animation-delay: 2s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+/* Header Styles */
+.luxury-services-header {
+  text-align: center;
+  margin-bottom: 6rem;
+  position: relative;
+}
+
+.luxury-services-title {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.5px;
+  font-family: 'Playfair Display', serif;
+}
+
+.luxury-highlight {
+  color: var(--primary-accent);
+  position: relative;
+  display: inline-block;
+}
+
+.luxury-highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--primary-accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: var(--transition);
+  z-index: -1;
+}
+
+.luxury-services-title:hover .luxury-highlight::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.luxury-services-subtitle {
+  font-size: 1.5rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  max-width: 700px;
+  margin: 0 auto;
+  font-weight: 300;
+}
+
+/* Services Grid */
+.luxury-services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 3rem;
+  margin-bottom: 6rem;
+}
+
+.luxury-service-card {
+  position: relative;
+  background: rgba(15, 15, 26, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: var(--border-radius);
+  padding: 3rem;
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  transition: var(--transition);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.luxury-service-card-decoration {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  border-top-right-radius: var(--border-radius);
+  border-bottom-left-radius: 100%;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), transparent);
+}
+
+.luxury-service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--box-shadow-accent);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+.luxury-service-card-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), 
+              rgba(212, 175, 55, 0.1) 0%, 
+              transparent 70%);
+  opacity: 0;
+  transition: var(--transition-fast);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.luxury-service-card:hover .luxury-service-card-hover {
+  opacity: 1;
+}
+
+/* Service Icon */
+.luxury-service-icon-wrapper {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 2rem;
+}
+
+.luxury-service-icon-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(212, 175, 55, 0.1);
+  border-radius: 50%;
+  transform: scale(0.8);
+  transition: var(--transition);
+}
+
+.luxury-service-icon {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.luxury-service-icon svg {
+  width: 40px;
+  height: 40px;
+  fill: var(--primary-accent);
+  transition: var(--transition);
+}
+
+.luxury-service-card:hover .luxury-service-icon-bg {
+  transform: scale(1);
+  background: rgba(212, 175, 55, 0.2);
+}
+
+.luxury-service-card:hover .luxury-service-icon svg {
+  transform: rotate(10deg);
+}
+
+/* Card Content */
+.luxury-service-card-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--primary-accent);
+  font-family: 'Playfair Display', serif;
+}
+
+.luxury-service-card-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+/* Features List */
+.luxury-service-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.luxury-service-feature {
+  position: relative;
+  padding-left: 1.8rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  transition: var(--transition-fast);
+}
+
+.luxury-service-feature-marker {
+  position: absolute;
+  top: 0.5rem;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background: var(--primary-accent);
+  border-radius: 50%;
+  transition: var(--transition-fast);
+}
+
+.luxury-service-feature:hover {
+  transform: translateX(5px);
+}
+
+.luxury-service-feature:hover .luxury-service-feature-marker {
+  transform: scale(1.5);
+}
+
+/* CTA Footer */
+.luxury-services-cta {
+  text-align: center;
+  padding-top: 4rem;
+  border-top: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.luxury-services-cta-text {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: var(--text-light);
+}
+
+/* Button Styles (consistent with hero) */
+.luxury-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  border: none;
+  cursor: pointer;
+  --x: 0;
+  --y: 0;
+}
+
+.luxury-btn-text {
+  position: relative;
+  z-index: 3;
+  transition: var(--transition-fast);
+}
+
+.luxury-btn-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at var(--x) var(--y), 
+              rgba(255, 255, 255, 0.2) 0%, 
+              transparent 70%);
+  opacity: 0;
+  transition: var(--transition-fast);
+  z-index: 2;
+}
+
+.luxury-btn:hover .luxury-btn-hover {
+  opacity: 1;
+}
+
+.luxury-btn-secondary {
+  background-color: transparent;
+  color: var(--text-light);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  position: relative;
+}
+
+.luxury-btn-secondary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.1) 0%, transparent 100%);
+  z-index: -1;
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.luxury-btn-secondary:hover {
+  border-color: var(--primary-accent);
+  transform: translateY(-3px);
+}
+
+.luxury-btn-secondary:hover::before {
+  opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .luxury-services-title {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .luxury-services {
+    padding: 8rem 5%;
+  }
+  
+  .luxury-services-title {
+    font-size: 3rem;
+  }
+  
+  .luxury-services-subtitle {
+    font-size: 1.3rem;
+  }
+  
+  .luxury-services-grid {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    margin: 0 auto 6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .luxury-services-title {
+    font-size: 2.5rem;
+  }
+  
+  .luxury-services-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .luxury-service-card {
+    padding: 2rem;
+  }
+  
+  .luxury-services-cta-text {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .luxury-services-title {
+    font-size: 2.2rem;
+  }
+  
+  .luxury-service-card-title {
+    font-size: 1.5rem;
+  }
+  
+  .luxury-service-card-description {
+    font-size: 1rem;
+  }
+}
